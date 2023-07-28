@@ -9,5 +9,4 @@ app.disable("x-powered-by");
 app.use(morgan("dev"));
 app.use(cors(options));
 
-
 export default app;

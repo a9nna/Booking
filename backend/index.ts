@@ -1,4 +1,4 @@
-import "./src/loadEnvironments.js"
+import "./src/loadEnvironments.js";
 import createDebug from "debug";
 import chalk from "chalk";
 import startServer from "./src/server/startServer.js";
@@ -13,7 +13,6 @@ try {
 
   await connectDatabase(url);
   debug(chalk.bgGreen("Connected to database"));
-  
 } catch (error) {
   debug(chalk.bgRed(error.message));
 }

@@ -3,22 +3,22 @@ import { Schema, model } from "mongoose";
 const tripSchema = new Schema({
   status: {
     type: Boolean,
-    required: true
+    required: true,
   },
   createdAt: {
     type: Date,
-    required: true
+    required: true,
   },
   deletedAt: {
     type: Date,
-    required: true
+    required: true,
   },
   description: {
     type: String,
-    required: true
-  }
-})
+    required: true,
+  },
+});
 
-const Trip = model("Trip", tripSchema, "Destinations")
+const Trip = model("Trip", tripSchema, "Destinations");
 
 export default Trip;
