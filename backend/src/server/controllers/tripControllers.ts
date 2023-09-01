@@ -23,3 +23,35 @@ export const getTrips = async (
     next(error);
   }
 };
+
+export const deleteTripsById = async (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  const { idTrip } = req.params;
+
+  if (!idTrip) {
+    throw new CustomError(
+      "Couldn't find the identifier.",
+      400,
+      "Couldn't find the trip selected to delete."
+    )
+  }
+
+  try {
+    const tripToDelete = await Trip.findByIdAndDelete({ id: idTrip}).exec();
+
+    if (!tripToDelete) {
+      throw new CustomError(
+        "Couldn't delete the trip.",
+        500,
+        "Couldn't delete the trip selected."
+      )
+    }
+    
+    res.status(200).json({idTrip});
+  } catch (error) {
+    next(error);
+  }
+}
