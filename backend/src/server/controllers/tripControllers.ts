@@ -31,16 +31,8 @@ export const deleteTripsById = async (
 ) => {
   const { idTrip } = req.params;
 
-  if (!idTrip) {
-    throw new CustomError(
-      "Couldn't find the identifier.",
-      400,
-      "Couldn't find the trip selected to delete."
-    )
-  }
-
   try {
-    const tripToDelete = await Trip.findByIdAndDelete({ id: idTrip}).exec();
+    const tripToDelete = await Trip.findByIdAndDelete({ _id: idTrip}).exec();
 
     if (!tripToDelete) {
       throw new CustomError(
