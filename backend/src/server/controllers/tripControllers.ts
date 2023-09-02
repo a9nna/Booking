@@ -6,7 +6,7 @@ import { Trip as TripStructure } from "../types.js";
 export const getTrips = async (
   req: Request,
   res: Response,
-  next: NextFunction,
+  next: NextFunction
 ) => {
   try {
     const trips = await Trip.find().exec();
@@ -28,7 +28,7 @@ export const getTrips = async (
 export const deleteTripsById = async (
   req: Request,
   res: Response,
-  next: NextFunction,
+  next: NextFunction
 ) => {
   const { idTrip } = req.params;
 
@@ -43,7 +43,7 @@ export const deleteTripsById = async (
       );
     }
 
-    res.status(200).json({ idTrip });
+    res.status(204).json({ idTrip });
   } catch (error) {
     next(error);
   }
@@ -56,7 +56,7 @@ export const createTrip = async (
     TripStructure
   >,
   res: Response,
-  next: NextFunction,
+  next: NextFunction
 ) => {
   try {
     const newTrip = req.body;
@@ -76,3 +76,41 @@ export const createTrip = async (
     next(error);
   }
 };
+
+export const updateTripById = async (
+  req: Request<
+    Record<string, unknown>,
+    Record<string,unknown>,
+    TripStructure
+  >,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const { idTrip } = req.params
+    const { createdAt, deletedAt, description } = req.body;
+  
+    const updatedTrip = await Trip.findByIdAndUpdate(
+      {
+        _id: idTrip
+      },
+      {
+        createdAt,
+        deletedAt,
+        description
+      }
+    );
+  
+    if (!updatedTrip) {
+      throw new CustomError(
+        "Couldn't update the trip.",
+        500,
+        "Couldn't update the trip."
+      )
+    }
+
+  res.status(204).json({ idTrip });
+  } catch (error) {
+    next(error)
+  }
+}

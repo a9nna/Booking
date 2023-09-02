@@ -10,8 +10,7 @@ const tripSchema = new Schema({
     required: true,
   },
   deletedAt: {
-    type: Date,
-    required: true,
+    type: Date
   },
   description: {
     type: String,

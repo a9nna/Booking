@@ -1,8 +1,8 @@
-import "./src/loadEnvironments.js";
+import "./loadEnvironments.js";
 import createDebug from "debug";
 import chalk from "chalk";
-import startServer from "./src/server/startServer.js";
-import connectDatabase from "./src/database/connectDatabase.js";
+import startServer from "./server/startServer.js";
+import connectDatabase from "./database/connectDatabase.js";
 const debug = createDebug("app");
 const port = process.env.PORT!;
 const url = process.env.DATABASE_CONNECTION_URL!;
