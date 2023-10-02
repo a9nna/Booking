@@ -9,9 +9,11 @@ const config: Config = {
   ],
   theme: {
     colors: {
-      primary: "#a5b4fc",
-      secondary: "#6366f1",
-      background: "#f9fafb",
+      primary: "#7CC0B8",
+      secondary: "#6a85c5",
+      title: "#508ca4",
+      primaryText: "#000000",
+      secondaryText: "#ffffff",
       active: "#4ade80",
       activeBorder: "#15803d",
       inactive: "#fb7185",
