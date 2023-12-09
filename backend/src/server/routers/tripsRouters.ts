@@ -9,8 +9,8 @@ import {
 const tripsRouters = Router();
 
 tripsRouters.get("/", getTrips);
-tripsRouters.delete("/delete/:idTrip", deleteTripsById);
-tripsRouters.post("/create", createTrip);
-tripsRouters.put("/update/:idTrip", updateTripById);
+tripsRouters.delete("/:idTrip", deleteTripsById);
+tripsRouters.post("/", createTrip);
+tripsRouters.put("/:idTrip", updateTripById);
 
 export default tripsRouters;
